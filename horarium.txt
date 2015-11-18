@@ -1,0 +1,15 @@
+Where the horarium comes from:
+
+Horai (The seasons) are the 12 daughters of Helios and Selene
+from whom 'selenium' comes, and each daughter is a month of
+the year. Long afterwards the meaning of Horai had been shifted
+to '12 hours of a day', and it is especially impressive for me
+that the word 'horarium' is used as religous(sacred) diary or
+schedule in Catholic Churches.
+
+As you know, our framework comes from the Selenium like as
+Horai come from Selene. So I've decided to name our framework
+as 'The Horarium'.
+
+05 August, 2011
+tueda aka Tatsuya Ueda

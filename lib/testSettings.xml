@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Runtime Properties for AutoTest</comment>
+<!-- selenium basic settings -->
+<entry key="ServerHost">localhost</entry>
+<entry key="ServerPort">4444</entry>
+ <entry key="BrowserURL">http://dummytest.ueo.co.jp</entry>
+<!--  <entry key="BrowserURL">http://www.ueo.co.jp/~itozyun/CourceTrimming/</entry> -->
+
+<!-- JDBC settings -->
+<entry key="JdbcDriver">com.mysql.jdbc.Driver</entry>
+<entry key="JdbcUrl">jdbc:mysql://dummytest.solar.ueo.co.jp:3306/CURRENT_MASTER_6</entry>
+<entry key="JdbcUser">mysql</entry>
+<entry key="JdbcPasswd"></entry>
+
+<!-- client environment settings -->
+<entry key="DefaultEncoding">MS932</entry>
+<entry key="WaitForButtonToGetFocus">1000</entry> <!-- dialogのボタンがfocusをgetするまでの待ち時間 (msec) -->
+<entry key="WaitForDialogToLoad">60000</entry> <!-- dialogが表示されるまでの待ち時間 (msec) -->
+
+<!-- Browser specific settings -->
+<entry key="BrowserStartCommand">*iexplore</entry>
+<entry key="BrowserExecutablePath">C:\Program Files (x86)\Internet Explorer\iexplore.exe</entry>
+<entry key="BrowserAlertWindowText">Web ページからのメッセージ</entry>
+<entry key="BrowserAlertOkText">OK</entry>
+
+<entry key="BrowserFileDownloadConfirm">true</entry>
+<entry key="BrowserFileDownloadConfirmText">ファイルのダウンロード</entry>
+<entry key="BrowserFileDownloadConfirmButton">保存(&amp;S)</entry> <!-- 開く(&amp;O) 保存(&amp;S) キャンセル -->
+<entry key="BrowserFileDownloadDialog">true</entry>
+<entry key="BrowserFileDownloadDialogText">名前を付けて保存</entry>
+<entry key="BrowserFileDownloadDialogButton">保存(&amp;S)</entry> <!-- 保存(&amp;S) キャンセル -->
+<entry key="BrowserFileDownloadOverrideConfirm">true</entry>
+<entry key="BrowserFileDownloadOverrideConfirmText">名前を付けて保存の確認</entry>
+<entry key="BrowserFileDownloadOverrideConfirmButton">はい(&amp;Y)</entry> <!-- はい(&amp;Y) いいえ(&amp;N) -->
+<entry key="BrowserFileDownloadCompleteConfirm">true</entry>
+<entry key="BrowserFileDownloadCompleteConfirmText">ダウンロードの完了</entry>
+<entry key="BrowserFileDownloadCompleteConfirmButton">閉じる</entry> <!-- ファイルを開く(&amp;O) フォルダを開く(&amp;F) 閉じる -->
+<entry key="BrowserFileDownloadDirectory">E:\tueda\test\download</entry>
+
+<!-- DummyData -->
+<entry key="CygwinDir">C:\cygwin64\bin</entry>
+
+<!-- Debug level -->
+<entry key="LogLevel">LOG_DEBUG</entry>
+</properties>

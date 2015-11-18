@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Integration" default="compile" basedir="./">
+
+         <!-- プロパティ -->
+         <property name="src.dir" value="./src"/>
+         <property name="classes.dir" value="./classes"/>
+         <property name="lib.dir" value="./lib"/>
+         <property name="doc.dir" value="./doc"/>
+         <property name="report.dir" value="${doc.dir}/reports"/>
+         <property name="result.dir" value="${doc.dir}/result"/>
+         <property name="selenium.dir" value="E:\tueda\selenium\selenium-2.1.0" />
+         <property name="junit.dir" value="E:\tueda\junit" />
+
+         <!-- ライブラリ -->
+         <path id="libs">
+                 <fileset dir="./lib">
+                          <include name="*"/>
+                 </fileset>
+                 <fileset dir="${selenium.dir}">
+                 	<include name="**/*" />
+                 </fileset>
+         </path>
+
+         <!-- 初期化 -->
+         <target name="init">
+                 <mkdir dir="${classes.dir}"/>
+                 <mkdir dir="${doc.dir}"/>
+                 <mkdir dir="${report.dir}"/>
+         </target>
+
+         <!-- コンパイル -->
+         <target name="compile" depends="init">
+                 <javac srcdir="${src.dir}"
+                                  destdir="${classes.dir}"
+                                  encoding="UTF-8">
+                          <classpath refid="libs"/>
+                 </javac>
+         </target>
+
+         <!-- テスト -->
+         <target name="junit" depends="compile">
+                          <delete>
+                                         <fileset dir="${report.dir}" includes="**/*" />
+                          </delete>
+
+                          <!-- テストを実行して結果をXMLファイルとして出力 -->
+                          <junit printsummary="yes" haltonfailure="no">
+                                         <classpath>
+                                            <pathelement location="${classes.dir}"/>
+                                            <fileset dir="./lib">
+                                                      <include name="*"/>
+                                            </fileset>
+                                         	<fileset dir="${junit.dir}">
+                                         		<include name="*" />
+                                         	</fileset>
+                                         </classpath>
+                                         <formatter type="xml"/>
+                                         <batchtest fork="yes" todir="${report.dir}">
+                                                      <fileset dir="${src.dir}">
+                                                                         <include name="**/*Test.java"/>
+                                                      </fileset>
+                                         </batchtest>
+                          </junit>
+         </target>
+
+         <!-- JUnitReport -->
+         <target name="report" depends="junit">
+
+                  <!-- XMLファイルを基にHTML形式のレポートを出力 -->
+                  <junitreport todir="${report.dir}">
+                                    <fileset dir="${report.dir}">
+                                                      <include name="TEST-*.xml"/>
+                                    </fileset>
+                                    <report format="frames" todir="${result.dir}"/>
+                  </junitreport>
+
+                  <!-- タイムスタンプ作成 -->
+                  <tstamp>
+                         <format property="NOW" pattern="yyyy-MM-dd HH:mm:dd"/>
+                  </tstamp>
+
+                  <!-- 実行時間を知るためにHTMLの一部を現在の日付時刻に置換 -->
+                  <replace file="${result.dir}/overview-summary.html"
+                         token="Unit Test Results"
+                         value="Unit Test Results - ${NOW}"/>
+         </target>
+
+         <target name="clean">
+             <delete includeemptydirs="true">
+
+             	<fileset dir="${classes.dir}" />
+             </delete>
+         </target>
+
+         <!-- CVS update -->
+         <target name="cvs">
+                  <cvs command="update -P -d"/>
+         </target>
+</project>
